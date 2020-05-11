@@ -1,9 +1,17 @@
 #include "SDL.h"
+#include <vector>
 
 struct Vector2
 {
 	float x, y;
 };
+
+struct Ball 
+{
+	Vector2 BallPos;
+	Vector2 BallVel;
+};
+
 class Game
 {
 public:
@@ -21,6 +29,10 @@ public:
 
 private:
 
+	std::vector<Ball> Balls;
+
+	Ball mBall;
+
 	//Helper Function for the game
 	void ProcessInput();
 
@@ -37,7 +49,23 @@ private:
 	//Is game should continue to run?
 	bool mIsRunning;
 
-	Vector2 mPaddlePos;
+	Vector2 mPaddlePos_01;
+
+	Vector2 mPaddlePos_02;
 
 	Vector2 mBallPos;
+
+	Vector2 mBallVel;
+
+	Uint32 mTicksCount;
+
+	int mPaddleDir_01;
+
+	int mPaddleDir_02;
+
+	//The distance between the ball and paddle
+	float Diff_01;
+
+	float Diff_02;
+
 };
